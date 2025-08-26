@@ -1,0 +1,21 @@
+# Travel：架构与数据流
+
+*目标：* 用一条清晰的链路把召回、Rerank、Agent 串起来，保证工程可控与可扩展。
+
+## System Architecture
+![Pipeline](/images/cover-travel.png)
+
+## Online Pipeline（request → result）
+- API 网关（Go）聚合：地理范围 + 关键词
+- **召回**：Elasticsearch（BM25） + Qdrant（向量），RRF 融合
+- **Rerank**：Light model 或 rules
+- **Agent**：调用天气/地图/本地检索工具，补全信息
+
+## OffLine Pipeline（data → index）
+- Ray 单机批处理：清洗 + BGE-M3 embeddings
+- Upsert：ES（lexical），Qdrant（vector）
+- MongoDB：GeoJSON + TTL 缓存（逆地理编码）
+
+## Tradeoff
+- 先保工程闭环与数据质量，再谈模型升级
+- Agent 的工具调用要有超时与回退策略
