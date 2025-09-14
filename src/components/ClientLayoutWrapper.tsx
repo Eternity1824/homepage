@@ -13,5 +13,6 @@ export default function ClientLayoutWrapper({ children }: PropsWithChildren) {
     return <>{children}</>;
   }
 
+  // Directly render Layout without any delays to prevent flashing
   return <Layout>{children}</Layout>;
 }

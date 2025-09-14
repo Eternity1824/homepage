@@ -17,7 +17,7 @@ const navItems: NavItem[] = [
 
 export default function Layout({ children }: { children: ReactNode }) {
   return (
-    <div className="min-h-screen bg-slate-950 text-white">
+    <div className="min-h-screen bg-background text-foreground">
       <div className="mx-auto max-w-5xl px-4 sm:px-6 lg:px-8">
         <header className="py-6">
           <nav className="flex items-center justify-between">
@@ -32,7 +32,7 @@ export default function Layout({ children }: { children: ReactNode }) {
                     href={item.href}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="text-sm text-white/70 hover:text-white transition-colors"
+                    className="text-sm text-foreground/70 hover:text-foreground transition-colors"
                   >
                     {item.label}
                   </a>
@@ -40,7 +40,7 @@ export default function Layout({ children }: { children: ReactNode }) {
                   <Link
                     key={item.href}
                     href={item.href}
-                    className="text-sm text-white/70 hover:text-white transition-colors"
+                    className="text-sm text-foreground/70 hover:text-foreground transition-colors"
                   >
                     {item.label}
                   </Link>
@@ -50,8 +50,8 @@ export default function Layout({ children }: { children: ReactNode }) {
           </nav>
         </header>
         <main>{children}</main>
-        <footer className="py-12 text-center text-sm text-white/50">
-          <p>© {new Date().getFullYear()} Lihan Zhou. All rights reserved.</p>
+        <footer className="py-12 text-center text-sm text-foreground/50">
+          <p> {new Date().getFullYear()} Lihan Zhou. All rights reserved.</p>
         </footer>
       </div>
     </div>

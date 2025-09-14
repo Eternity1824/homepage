@@ -13,8 +13,8 @@ export const metadata: Metadata = {
 
 export default function RootLayout({ children }: { children: ReactNode }) {
     return (
-        <html lang="en" className={inter.variable}>
-        <body className="min-h-screen bg-[#0B0F14] text-[#E6EDF3] antialiased">
+        <html lang="en" className={`${inter.variable} dark`} style={{ backgroundColor: '#000000' }}>
+        <body className="min-h-screen bg-background text-foreground antialiased" style={{ backgroundColor: '#000000', color: '#ffffff' }}>
             <ClientLayoutWrapper>{children}</ClientLayoutWrapper>
         </body>
         </html>

@@ -10,12 +10,15 @@ export default function IntroPage() {
   const japaneseLyrics = "「ワタリドリの様に今 旅に発つよ」";
 
   useEffect(() => {
+    // Preload the home page to eliminate loading delay
+    router.prefetch('/home');
+    
     const timer = setTimeout(() => {
       setIsVisible(false);
       // Wait for exit animation to complete before redirecting
       setTimeout(() => {
-        router.push('/home');
-      }, 600);
+        router.replace('/home'); // Use replace instead of push for smoother transition
+      }, 500);
     }, 3000);
 
     return () => clearTimeout(timer);
@@ -38,7 +41,7 @@ export default function IntroPage() {
           }}
           initial={{ opacity: 1 }}
           exit={{ opacity: 0 }}
-          transition={{ duration: 0.6 }}
+          transition={{ duration: 0.5 }}
         >
           <motion.p
             className="text-2xl md:text-3xl font-light tracking-wider text-white px-4 text-center"
